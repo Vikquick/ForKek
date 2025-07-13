@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Самодиагностика зависимости от ИИ</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 2rem;
+      max-width: 700px;
+    }
+    h1 {
+      color: #333;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 30px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Самодиагностика зависимости от ИИ</h1>
+  <form id="aiForm">
+    <p>Ответь "Да" или "Нет" на каждый вопрос.</p>
+
+    <div class="question">
+      1. Использую ли я ИИ-приложения дольше, чем планировал?<br>
+      <input type="radio" name="q1" value="yes"> Да
+      <input type="radio" name="q1" value="no"> Нет
+    </div>
+
+    <div class="question">
+      2. Обещал ли я себе сократить использование ИИ, но не смог удержаться?<br>
+      <input type="radio" name="q2" value="yes"> Да
+      <input type="radio" name="q2" value="no"> Нет
+    </div>
+
+    <div class="question">
+      3. Бывают ли у меня "запои" с ИИ-приложениями — целый день или ночь?<br>
+      <input type="radio" name="q3" value="yes"> Да
+      <input type="radio" name="q3" value="no"> Нет
+    </div>
+
+    <div class="question">
+      4. Тянусь ли я к ИИ каждый раз, как только появляется свободная минутка?<br>
+      <input type="radio" name="q4" value="yes"> Да
+      <input type="radio" name="q4" value="no"> Нет
+    </div>
+
+    <div class="question">
+      5. Пренебрегаю ли я при этом сном, гигиеной или питанием?<br>
+      <input type="radio" name="q5" value="yes"> Да
+      <input type="radio" name="q5" value="no"> Нет
+    </div>
+
+    <div class="question">
+      6. Чувствую ли я тревожность или пустоту, когда не пользуюсь ИИ?<br>
+      <input type="radio" name="q6" value="yes"> Да
+      <input type="radio" name="q6" value="no"> Нет
+    </div>
+
+    <div class="question">
+      7. Возникают ли конфликты с близкими из-за моего взаимодействия с ИИ?<br>
+      <input type="radio" name="q7" value="yes"> Да
+      <input type="radio" name="q7" value="no"> Нет
+    </div>
+
+    <div class="question">
+      8. Влияет ли это на мою учёбу, работу или финансы?<br>
+      <input type="radio" name="q8" value="yes"> Да
+      <input type="radio" name="q8" value="no"> Нет
+    </div>
+
+    <div class="question">
+      9. Скрываю ли я, сколько времени провожу с ИИ или что делаю с ним?<br>
+      <input type="radio" name="q9" value="yes"> Да
+      <input type="radio" name="q9" value="no"> Нет
+    </div>
+
+    <div class="question">
+      10. Испытываю ли я вину или стыд из-за этого?<br>
+      <input type="radio" name="q10" value="yes"> Да
+      <input type="radio" name="q10" value="no"> Нет
+    </div>
+
+    <button type="button" onclick="checkAnswers()">Показать результат</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    function checkAnswers() {
+      let form = document.forms["aiForm"];
+      let yesCount = 0;
+
+      for (let i = 1; i <= 10; i++) {
+        let answer = form["q" + i].value;
+        if (answer === "yes") {
+          yesCount++;
+        }
+      }
+
+      let resultText = "Ваш результат: " + yesCount + " из 10 положительных ответов.<br><br>";
+
+      if (yesCount <= 2) {
+        resultText += "🟢 Всё под контролем.";
+      } else if (yesCount <= 5) {
+        resultText += "🟡 Стоит быть внимательнее к привычкам.";
+      } else {
+        resultText += "🔴 Возможно, стоит задуматься об ограничении или обратиться к специалисту.";
+      }
+
+      document.getElementById("result").innerHTML = resultText;
+    }
+  </script>
+</body>
+</html>
